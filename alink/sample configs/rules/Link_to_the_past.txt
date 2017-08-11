@@ -1,0 +1,41 @@
+Link to the past
+1|Rupees|F360|2|UnsignedInteger|AnyChange|Difference|LittleEndian|0
+1|Arrows|F377|1|UnsignedInteger|AnyChange|Difference|LittleEndian|0
+1|Piece of heart|F36B|1|UnsignedInteger|AnyChange|Difference|LittleEndian|0
+1|Hearts|F36C|1|UnsignedInteger|AnyChange|Difference|LittleEndian|0
+1|Bottle 1|F35C|1|Data|AnyChange|AllBytes|LittleEndian|1
+1|Bottle 2|F35D|1|Data|AnyChange|AllBytes|LittleEndian|1
+1|Bottle 3|F35E|1|Data|AnyChange|AllBytes|LittleEndian|1
+1|Bottle 4|F35F|1|Data|AnyChange|AllBytes|LittleEndian|1
+1|Bow|F340|1|Data|AnyChange|AllBytes|LittleEndian|1
+1|Boomerang|F341|1|Data|AnyChange|AllBytes|LittleEndian|1
+1|Hookshot|F342|1|Data|AnyChange|AllBytes|LittleEndian|1
+1|Bombs|F343|1|UnsignedInteger|AnyChange|Difference|LittleEndian|1
+1|Mushroom/Powder|F344|1|Data|AnyChange|AllBytes|LittleEndian|1
+1|Fire Rod|F345|1|Data|AnyChange|AllBytes|LittleEndian|1
+1|Ice Rod|F346|1|Data|AnyChange|AllBytes|LittleEndian|1
+1|Bombos Medallion|F347|1|Data|AnyChange|AllBytes|LittleEndian|1
+1|Ether Medallion|F348|1|Data|AnyChange|AllBytes|LittleEndian|1
+1|Quake Medallion|F349|1|Data|AnyChange|AllBytes|LittleEndian|1
+1|Lamp|F34A|1|Data|AnyChange|AllBytes|LittleEndian|1
+1|Hammer|F34B|1|Data|AnyChange|AllBytes|LittleEndian|1
+1|Shovel/Flute|F34C|1|Data|AnyChange|AllBytes|LittleEndian|1
+1|Net|F34D|1|Data|AnyChange|AllBytes|LittleEndian|1
+1|Book of Mudora|F34E|1|Data|AnyChange|AllBytes|LittleEndian|1
+1|Bottle Count|F34F|1|Data|AnyChange|AllBytes|LittleEndian|0
+1|Cane of Somaria|F350|1|Data|AnyChange|AllBytes|LittleEndian|1
+1|Cane of Byrna|F351|1|Data|AnyChange|AllBytes|LittleEndian|1
+1|Magic Cape|F352|1|Data|AnyChange|AllBytes|LittleEndian|1
+1|Mirror|F353|1|Data|AnyChange|AllBytes|LittleEndian|1
+1|Power Glove/Titan's Mitt|F354|1|Data|AnyChange|AllBytes|LittleEndian|1
+1|Pegasus Boots|F355|1|Data|AnyChange|AllBytes|LittleEndian|1
+1|Zora's Flippers|F356|1|Data|AnyChange|AllBytes|LittleEndian|1
+1|Pearl|F357|1|Data|AnyChange|AllBytes|LittleEndian|1
+1|Sword|F359|1|Data|AnyChange|AllBytes|LittleEndian|1
+1|Shield|F35A|1|Data|AnyChange|AllBytes|LittleEndian|1
+1|Armor|F35B|1|Data|AnyChange|AllBytes|LittleEndian|1
+1|Abilities|F379|1|Flags|FlagOn|AllBytes|LittleEndian|1
+1|Pendants|F374|1|Flags|FlagOn|AllBytes|LittleEndian|1
+1|Crystals|F37A|1|Flags|FlagOn|AllBytes|LittleEndian|1
+1|NPC Flags|F410|1|Flags|AnyChange|AllBytes|LittleEndian|0
+1|Sword and shield found|F3C5|1|Flags|AnyChange|AllBytes|LittleEndian|0
