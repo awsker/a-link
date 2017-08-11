@@ -254,6 +254,8 @@ namespace alink.UI
             foreach (var i in indexes)
             {
                 var rule = _rules[i].Clone();
+                //This is probably what the user wants
+                rule.MemoryOffset64 += rule.NumBytes;
                 _rules.Insert(i + ++accIndex, rule);
             }
         }
