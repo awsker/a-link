@@ -26,4 +26,4 @@ I kept the settings file as simple and readable as possible. They are plain txt-
 
 # The code
 While functional, it's a proof of concept more than anything. Exception handling, structure and documentation is sub-par.
-For process memory manipulation I use the [extemory](https://github.com/jeffora/extemory) library.
+It is provided as is. No guarantees of any kind are offered. For process memory manipulation I use the [extemory](https://github.com/jeffora/extemory) library. 
