@@ -40,6 +40,7 @@ namespace alink
             {
                 var memoryEditor = new MemoryEditor(_processManager);
                 memoryEditor.ShowDialog(this);
+                IOManager.WriteRulesConfig(rulesSelector1.SelectedConfig);
             }
         }
 

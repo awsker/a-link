@@ -55,7 +55,7 @@ namespace alink.Models
             
             //Unused so far
             var version = split[0];
-
+            
             _description = split[1];
             _memoryOffset = Convert.ToInt64(split[2], 16);
             _numBytes = Convert.ToInt32(split[3]);
@@ -63,7 +63,10 @@ namespace alink.Models
             _trigger = (ChangeTrigger)Enum.Parse(typeof(ChangeTrigger), split[5]);
             _transferType = (TransferType)Enum.Parse(typeof(TransferType), split[6]);
             _endian = (Endianness)Enum.Parse(typeof(Endianness), split[7]);
-            _printToLog = split[8] == "1";
+            if (split.Length > 8)
+            {
+                _printToLog = split[8] == "1";
+            }
         }
 
         public string Description

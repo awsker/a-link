@@ -9,6 +9,7 @@ namespace alink.UI
         public MemoryOffsetEditor()
         {
             InitializeComponent();
+            intPointerRadioButton.Checked = true;
         }
 
         public MemoryOffsetEditor(MemoryOffset offset):this()

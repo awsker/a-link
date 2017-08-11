@@ -19,6 +19,7 @@ namespace alink.UI
             _rules = new BindingList<MemoryRule>();
             //dataGridView1.RowsAdded += DataGridView1OnRowsAdded;
             setupColumns();
+            dataGridView1.DataSource = _rules;
         }
 
         public RulesEditor(RulesConfig config):this()
@@ -27,7 +28,6 @@ namespace alink.UI
             foreach(var r in config.Rules)
                 _rules.Add(r.Clone());
             _previousRulesConfig = config;
-            dataGridView1.DataSource = _rules;
         }
 
         #region UI Events

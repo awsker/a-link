@@ -92,58 +92,13 @@ namespace alink.UI
             _processManager.MemoryChanged -= onMemoryChanged;
         }
 
-        private class RuleMemoryContainer:INotifyPropertyChanged
-        {
-            public MemoryRule MemoryRule { get; private set; }
-            public string Description { get; private set; }
-            public string MemoryOffset { get { return MemoryOffset64.ToString("X"); } }
-            public long MemoryOffset64 { get; private set; }
-            public string MemPos { get; private set; }
-            public int NumBytes { get; private set; }
-            public DataType DataType { get; private set; }
-
-            private object _data;
-
-            public object Data
-            {
-                get
-                {
-                    return _data;
-                }
-                set
-                {
-                    if (_data != value)
-                    {
-                        _data = value;
-                        onPropertyChanged();
-                    }
-                }
-            }
-
-            public RuleMemoryContainer(MemoryRule rule, object data, long actualMemoryPos)
-            {
-                MemoryRule = rule;
-                Description = rule.Description;
-                MemoryOffset64 = rule.MemoryOffset64;
-                MemPos = actualMemoryPos.ToString("X");
-                NumBytes = rule.NumBytes;
-                DataType = rule.DataType;
-                Data = data;
-            }
-
-            private void onPropertyChanged([CallerMemberName] string propName = null)
-            {
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
-            }
-
-            public event PropertyChangedEventHandler PropertyChanged;
-        }
-
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             if(e.ColumnIndex == 5)
             {
                 var rule = _rules[e.RowIndex];
+                if (rule.Data == null)
+                    return;
                 var newValueString = rule.Data.ToString();
                 var newBytes = bytesFromStringForRule(rule.MemoryRule, newValueString);
                 if (newBytes != null)
@@ -238,5 +193,80 @@ namespace alink.UI
             }
             return null;
         }
+
+
+        private class RuleMemoryContainer : INotifyPropertyChanged
+        {
+            public MemoryRule MemoryRule { get; private set; }
+
+            public string Description
+            {
+                get { return MemoryRule.Description; }
+                set
+                {
+                    if (MemoryRule.Description != value)
+                    {
+                        MemoryRule.Description = value;
+                        onPropertyChanged();
+                    }
+                }
+            }
+
+            public string MemoryOffset
+            {
+                get { return MemoryRule.MemoryOffset; }
+                set
+                {
+                    var newVal = Convert.ToInt64(value, 16);
+                    if (MemoryRule.MemoryOffset64 != newVal)
+                    {
+                        MemoryRule.MemoryOffset64 = newVal;
+                        onPropertyChanged();
+                    }
+                }
+            }
+
+            public long MemoryOffset64 { get; private set; }
+            public string MemPos { get; private set; }
+            public int NumBytes { get; private set; }
+            public DataType DataType { get; private set; }
+
+           private object _data;
+
+            public object Data
+            {
+                get
+                {
+                    return _data;
+                }
+                set
+                {
+                    if (_data != value)
+                    {
+                        _data = value;
+                        onPropertyChanged();
+                    }
+                }
+            }
+
+            public RuleMemoryContainer(MemoryRule rule, object data, long actualMemoryPos)
+            {
+                MemoryRule = rule;
+                Description = rule.Description;
+                MemoryOffset64 = rule.MemoryOffset64;
+                MemPos = actualMemoryPos.ToString("X");
+                NumBytes = rule.NumBytes;
+                DataType = rule.DataType;
+                Data = data;
+            }
+
+            private void onPropertyChanged([CallerMemberName] string propName = null)
+            {
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
+            }
+
+            public event PropertyChangedEventHandler PropertyChanged;
+        }
+
     }
 }

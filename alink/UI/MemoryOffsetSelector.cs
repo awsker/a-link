@@ -83,7 +83,7 @@ namespace alink.UI
         #region Private methods
         private void updateButtons()
         {
-            var anySelected = SelectedOffset != null;
+            var anySelected = comboBox1.SelectedIndex > 0 && SelectedOffset != null;
             deleteButton.Enabled = anySelected;
             editButton.Enabled = anySelected;
         }
