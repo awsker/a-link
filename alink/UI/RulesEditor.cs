@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
+using System.Drawing;
 using System.Windows.Forms;
 using alink.Models;
 
@@ -16,6 +18,7 @@ namespace alink.UI
         public RulesEditor()
         {
             InitializeComponent();
+            Icon = Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location);
             _rules = new BindingList<MemoryRule>();
             //dataGridView1.RowsAdded += DataGridView1OnRowsAdded;
             setupColumns();

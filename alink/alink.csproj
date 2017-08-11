@@ -52,6 +52,9 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Extemory, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
@@ -215,6 +218,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="icon.ico" />
     <Content Include="lib\BeaEngine.dll" />
     <Content Include="lib\Extemory.dll" />
   </ItemGroup>

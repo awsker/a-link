@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Reflection;
 using System.Windows.Forms;
 using alink.UI;
 using alink.Utils;
@@ -12,6 +13,7 @@ namespace alink
         public MainForm()
         {
             InitializeComponent();
+            Icon = Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location);
             initEvents();
             var ns = IOManager.ReadNetSettings();
             if (ns != null)

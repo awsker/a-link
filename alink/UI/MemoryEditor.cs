@@ -1,11 +1,13 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using alink.Models;
 using alink.Utils;
 using System.Globalization;
+using System.Reflection;
 
 namespace alink.UI
 {
@@ -17,6 +19,7 @@ namespace alink.UI
         public MemoryEditor(ProcessManager processManager)
         {
             InitializeComponent();
+            Icon = Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location);
             _rules = new BindingList<RuleMemoryContainer>();
             _processManager = processManager;
             _processManager.MemoryChanged += onMemoryChanged;
