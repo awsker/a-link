@@ -1,8 +1,8 @@
 Link to the past
 1|Rupees|F360|2|UnsignedInteger|AnyChange|Difference|LittleEndian|0
 1|Arrows|F377|1|UnsignedInteger|AnyChange|Difference|LittleEndian|0
-1|Piece of heart|F36B|1|UnsignedInteger|AnyChange|Difference|LittleEndian|0
-1|Hearts|F36C|1|UnsignedInteger|AnyChange|Difference|LittleEndian|0
+1|Piece of heart|F36B|1|UnsignedInteger|AnyChange|AllBytes|LittleEndian|1
+1|Hearts|F36C|1|UnsignedInteger|AnyChange|AllBytes|LittleEndian|1
 1|Bottle 1|F35C|1|Data|AnyChange|AllBytes|LittleEndian|1
 1|Bottle 2|F35D|1|Data|AnyChange|AllBytes|LittleEndian|1
 1|Bottle 3|F35E|1|Data|AnyChange|AllBytes|LittleEndian|1
