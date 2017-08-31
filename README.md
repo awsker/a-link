@@ -21,6 +21,9 @@ Every rule consists of a couple of fields.
 * [Endianness](https://en.wikipedia.org/wiki/Endianness)
 * Log - if checked, a line will be printed to the chat when the memory at this address was changed
 
+# Hidden Memory Debugging Mode
+Once attached to a process, you can debug the currently selected rules configuration by right-clicking on the 'Edit' button. This opens up a window where you can view and edit the current value of each rule and see its effect on the process in real-time.
+
 # The settings files
 I kept the settings file as simple and readable as possible. They are plain txt-files with settings separated by linebreaks, so they can be edited outside of the application with ease. Very little error handling is provided if you break the formatting.
 
