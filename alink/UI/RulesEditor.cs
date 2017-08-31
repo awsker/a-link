@@ -13,7 +13,6 @@ namespace alink.UI
     {
         private BindingList<MemoryRule> _rules;
         private RulesConfig _previousRulesConfig;
-
         
         public RulesEditor()
         {

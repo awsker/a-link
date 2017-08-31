@@ -63,6 +63,7 @@ namespace alink.UI
                 _list.Add(config);
                 IOManager.WriteRulesConfig(config);
                 comboBox1.SelectedIndex = _list.Count - 1;
+                updateButtons();
             }
         }
 
@@ -73,16 +74,20 @@ namespace alink.UI
             {
                 var config = SelectedConfig;
                 var filenameBeforeEdit = config.Filename;
+                var descriptionBeforeEdit = config.Description;
                 var dialog = new RulesEditor(config);
                 var res = dialog.ShowDialog(ParentForm);
                 if (res == DialogResult.OK)
                 {
-                    IOManager.WriteRulesConfig(dialog.RulesConfig);
-                    if (filenameBeforeEdit != null && config.Filename != filenameBeforeEdit)
+                    var newConfig = dialog.RulesConfig;
+                    if (filenameBeforeEdit != null && descriptionBeforeEdit != null && newConfig.Description != descriptionBeforeEdit)
                     {
-                        File.Delete(filenameBeforeEdit);
+                        if(File.Exists(filenameBeforeEdit))
+                            File.Delete(filenameBeforeEdit);
+
                     }
-                    comboBox1.SelectedIndex = _list.Count - 1;
+                    IOManager.WriteRulesConfig(newConfig);
+                    
                     updateButtons();
                 }
             }

@@ -49,6 +49,7 @@ namespace alink.UI
                 _list.Add(dialog.MemoryOffset);
                 saveMemoryOffsetsToFile();
                 comboBox1.SelectedIndex = _list.Count - 1;
+                updateButtons();
             }
         }
 
@@ -64,8 +65,8 @@ namespace alink.UI
                     _list.RemoveAt(index);
                     _list.Insert(index, dialog.MemoryOffset);
                     saveMemoryOffsetsToFile();
-                    comboBox1.SelectedIndex = _list.Count - 1;
                     updateButtons();
+                    comboBox1.SelectedIndex = index;
                 }
             }
         }

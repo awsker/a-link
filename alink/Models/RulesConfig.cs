@@ -3,16 +3,30 @@ using System.ComponentModel;
 
 namespace alink.Models
 {
-    public class RulesConfig
+    public class RulesConfig : INotifyPropertyChanged
     {
+        private string _description;
         public string Filename { get; set; }
-        public string Description { get; set; }
+
+        public string Description
+        {
+            get { return _description; }
+            set
+            {
+                if (value != _description)
+                {
+                    _description = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Description"));
+                }
+            }
+        }
+
         public IList<MemoryRule> Rules { get; }
         public long Checksum { get; set; }
 
         public RulesConfig(string description)
         {
-            Description = description.Replace("|", "");
+            _description = description.Replace("|", "");
             Rules = new BindingList<MemoryRule>();
             Checksum = 0;
         }
@@ -23,6 +37,8 @@ namespace alink.Models
                 Rules.Add(r);
             
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public override string ToString()
         {

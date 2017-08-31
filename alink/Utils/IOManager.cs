@@ -166,12 +166,12 @@ namespace alink.Utils
         {
             if (config.Filename != null)
                 return config.Filename;
-            var startName = config.Description.Replace(" ", "_") + ".txt";
-            var path = Path.Combine(location, startName);
+            var startName = config.Description;
+            var path = Path.Combine(location, startName + ".txt");
             int startInt = 1;
             while (File.Exists(path))
             {
-                path = Path.Combine(location, startName + "_" + ++startInt + ".txt");
+                path = Path.Combine(location, startName + " " + ++startInt + ".txt");
             }
             return path;
         }
