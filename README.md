@@ -1,4 +1,4 @@
-# a-link
+# A-Link
 This application can synchronize parts of a process' memory between clients that are connected to the same server.
 
 # Usage
