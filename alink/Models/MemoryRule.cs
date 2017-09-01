@@ -59,6 +59,8 @@ namespace alink.Models
             _description = split[1];
             _memoryOffset = Convert.ToInt64(split[2], 16);
             _numBytes = Convert.ToInt32(split[3]);
+            if (split[4] == "Flags")
+                split[4] = "Data";
             _dataType = (DataType)Enum.Parse(typeof (DataType), split[4]);
             _trigger = (ChangeTrigger)Enum.Parse(typeof(ChangeTrigger), split[5]);
             _transferType = (TransferType)Enum.Parse(typeof(TransferType), split[6]);
@@ -155,8 +157,7 @@ namespace alink.Models
         Data,
         SignedInteger,
         UnsignedInteger,
-        Decimal,
-        Flags
+        Decimal
     }
 
     public enum ChangeTrigger

@@ -9,7 +9,6 @@ using alink.Net.Data;
 
 namespace alink.Net
 {
-
     public class Client
     {
         private TcpClient _tcp;
@@ -77,6 +76,7 @@ namespace alink.Net
 
         public void Disconnect()
         {
+            SendPacketToServer(new Packet(NetConstants.PacketTypes.UserLeft, new byte[0]));
             _stopCalled = true;
         }
         
@@ -129,6 +129,12 @@ namespace alink.Net
                     byte[] buffer = new byte[size];
                     stream.Read(buffer, 0, size);
                     handleIncomingPacket(new Packet(buffer));
+                }
+                SendPacketToServer(new Packet(NetConstants.PacketTypes.UserLeft, new byte[0]));
+                if (_tcp != null)
+                {
+                    _tcp.Client.Close();
+                    _tcp.Close();
                 }
             }
             catch (Exception e)

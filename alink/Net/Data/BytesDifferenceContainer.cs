@@ -71,9 +71,9 @@ namespace alink.Net.Data
 
                 foreach (var range in this)
                 {
-                    if(rule.DataType == DataType.Flags && rule.ChangeTrigger == ChangeTrigger.FlagOn)
+                    if(rule.DataType == DataType.Data && rule.ChangeTrigger == ChangeTrigger.FlagOn)
                         manager.InjectFlagsOnFromExternal(ruleIndex, _offset, range.Bytes, range.Offset, username);
-                    if (rule.DataType == DataType.Flags && rule.ChangeTrigger == ChangeTrigger.FlagOff)
+                    if (rule.DataType == DataType.Data && rule.ChangeTrigger == ChangeTrigger.FlagOff)
                         manager.InjectFlagsOffFromExternal(ruleIndex, _offset, range.Bytes, range.Offset, username);
                     else
                         manager.InjectDataFromExternal(ruleIndex, _offset, range.Bytes, range.Offset, username);

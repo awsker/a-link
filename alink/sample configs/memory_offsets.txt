@@ -1,2 +1,4 @@
 Snes9x 32bit|7410D4|IntPointer
 Snes9x 64bit|1404DAF18|LongPointer
+Higan 104|952144|AbsoluteOffset
+bsnes+ 079|8579C8|IntPointer

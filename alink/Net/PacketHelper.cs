@@ -64,7 +64,7 @@ namespace alink.Net
 
         public static Packet CreateUserLeftPacket(UserThread user)
         {
-            return new Packet(NetConstants.PacketTypes.UserJoined, user.GetBytes());
+            return new Packet(NetConstants.PacketTypes.UserLeft, user.GetBytes());
         }
 
         public static Packet CreateUsersAlreadyHerePacket(IList<UserThread> users)

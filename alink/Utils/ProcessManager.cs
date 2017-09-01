@@ -129,10 +129,6 @@ namespace alink.Utils
             {
                 return isDataChangedAccordingToRule(bytes, rule, out changedBytes);
             }
-            if (rule.DataType == DataType.Flags)
-            {
-                return isFlagsChangedAccordingToRule(bytes, rule, out changedBytes);
-            }
             changedBytes = null;
             return false;
         }
@@ -140,15 +136,22 @@ namespace alink.Utils
         private bool isDataChangedAccordingToRule(byte[] bytes, MemoryRule rule, out IChangedDataContainer changedBytes)
         {
             ISet<long> changedBytesSet = new HashSet<long>();
-            var sendAll = rule.TransferType == TransferType.AllBytes;
             var count = bytes.LongLength;
+            var sendAll = rule.TransferType == TransferType.AllBytes;
             for (long i = 0; i < count; ++i)
             {
                 if (rule.Bytes[i] != bytes[i])
                 {
-                    changedBytesSet.Add(i);
-                    if (sendAll)
-                        break;
+                    if (rule.ChangeTrigger == ChangeTrigger.AnyChange ||
+                        rule.ChangeTrigger == ChangeTrigger.FlagOn && (rule.Bytes[i] | bytes[i]) != rule.Bytes[i] ||
+                        rule.ChangeTrigger == ChangeTrigger.FlagOff && (rule.Bytes[i] & bytes[i]) != rule.Bytes[i] ||
+                        rule.ChangeTrigger == ChangeTrigger.Increase && rule.NumBytes == 1 && bytes[i] > rule.Bytes[i] ||
+                        rule.ChangeTrigger == ChangeTrigger.Decrease && rule.NumBytes == 1 && bytes[i] < rule.Bytes[i])
+                    {
+                        changedBytesSet.Add(i);
+                        if (sendAll)
+                            break;
+                    }
                 }
             }
             if (changedBytesSet.Count > 0)
@@ -157,43 +160,6 @@ namespace alink.Utils
                     changedBytes = new BytesContainer(bytes, rule.MemoryOffset64);
                 else
                     changedBytes = BytesDifferenceContainer.ChangedBytesFromIndexSet(rule.MemoryOffset64, changedBytesSet, bytes);
-                return true;
-            }
-            else
-            {
-                changedBytes = null;
-                return false;
-            }
-        }
-
-        private bool isFlagsChangedAccordingToRule(byte[] bytes, MemoryRule rule, out IChangedDataContainer changedBytes)
-        {
-            ISet<long> changedBytesSet = new HashSet<long>();
-            var count = bytes.LongLength;
-            for (long i = 0; i < count; ++i)
-            {
-                if (rule.Bytes[i] != bytes[i])
-                {
-                    if (rule.DataType == DataType.Flags)
-                    {
-                        if (rule.ChangeTrigger == ChangeTrigger.AnyChange ||
-                            rule.ChangeTrigger == ChangeTrigger.FlagOn && (rule.Bytes[i] | bytes[i]) != rule.Bytes[i] ||
-                            rule.ChangeTrigger == ChangeTrigger.FlagOff && (rule.Bytes[i] & bytes[i]) != rule.Bytes[i] ||
-                            rule.ChangeTrigger == ChangeTrigger.Increase && rule.NumBytes == 1 && bytes[i] > rule.Bytes[i] ||
-                            rule.ChangeTrigger == ChangeTrigger.Decrease && rule.NumBytes == 1 && bytes[i] < rule.Bytes[i])
-                        {
-                            changedBytesSet.Add(i);
-                        }
-                    }
-                    else
-                    {
-                        changedBytesSet.Add(i);
-                    }
-                }
-            }
-            if (changedBytesSet.Count > 0)
-            {
-                changedBytes = BytesDifferenceContainer.ChangedBytesFromIndexSet(rule.MemoryOffset64, changedBytesSet, bytes);
                 return true;
             }
             else
@@ -362,7 +328,7 @@ namespace alink.Utils
         {
             var bytes = GetBytes(rule);
             object data = null;
-            if (rule.DataType == DataType.Data || rule.DataType == DataType.Flags)
+            if (rule.DataType == DataType.Data)
             {
                 if (rule.NumBytes == 1)
                     data = bytes[0];

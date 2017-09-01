@@ -34,8 +34,31 @@ Link to the past
 1|Sword|F359|1|Data|AnyChange|AllBytes|LittleEndian|1
 1|Shield|F35A|1|Data|AnyChange|AllBytes|LittleEndian|1
 1|Armor|F35B|1|Data|AnyChange|AllBytes|LittleEndian|1
-1|Abilities|F379|1|Flags|FlagOn|AllBytes|LittleEndian|1
-1|Pendants|F374|1|Flags|FlagOn|AllBytes|LittleEndian|1
-1|Crystals|F37A|1|Flags|FlagOn|AllBytes|LittleEndian|1
-1|NPC Flags|F410|1|Flags|AnyChange|AllBytes|LittleEndian|0
-1|Sword and shield found|F3C5|1|Flags|AnyChange|AllBytes|LittleEndian|0
+1|BombUpgrades|F370|1|UnsignedInteger|AnyChange|AllBytes|LittleEndian|1
+1|ArrowUpgades|F371|1|UnsignedInteger|AnyChange|AllBytes|LittleEndian|1
+1|Abilities|F379|1|Data|FlagOn|AllBytes|LittleEndian|0
+1|Pendants|F374|1|Data|FlagOn|AllBytes|LittleEndian|1
+1|Crystals|F37A|1|Data|FlagOn|AllBytes|LittleEndian|1
+1|NPC Flags|F410|1|Data|AnyChange|AllBytes|LittleEndian|0
+1|Room Data|F000|832|Data|AnyChange|Difference|LittleEndian|0
+1|Magic Usage|F37B|1|Data|AnyChange|AllBytes|LittleEndian|1
+1|Keys (Sewer Passage)|F37C|1|UnsignedInteger|AnyChange|Difference|LittleEndian|1
+1|Keys (Hyrule Castle)|F37D|1|UnsignedInteger|AnyChange|Difference|LittleEndian|1
+1|Keys (Eastern Palace)|F37E|1|UnsignedInteger|AnyChange|Difference|LittleEndian|1
+1|Keys (Desert Palace)|F37F|1|UnsignedInteger|AnyChange|Difference|LittleEndian|1
+1|Keys (Hyrule Castle 2)|F380|1|UnsignedInteger|AnyChange|Difference|LittleEndian|1
+1|Keys (Swamp Palace)|F381|1|UnsignedInteger|AnyChange|Difference|LittleEndian|1
+1|Keys (Dark Palace)|F382|1|UnsignedInteger|AnyChange|Difference|LittleEndian|1
+1|Keys (Misery Mire)|F383|1|UnsignedInteger|AnyChange|Difference|LittleEndian|1
+1|Keys (Skull Woods)|F384|1|UnsignedInteger|AnyChange|Difference|LittleEndian|1
+1|Keys (Ice Palace)|F385|1|UnsignedInteger|AnyChange|Difference|LittleEndian|1
+1|Keys (Tower of Hera)|F386|1|UnsignedInteger|AnyChange|Difference|LittleEndian|1
+1|Keys (Gargoyle's Domain)|F387|1|UnsignedInteger|AnyChange|Difference|LittleEndian|1
+1|Keys (Turtle Rock)|F388|1|UnsignedInteger|AnyChange|Difference|LittleEndian|1
+1|Keys (Ganon's Tower)|F389|1|UnsignedInteger|AnyChange|Difference|LittleEndian|1
+1|Keys (Unused 1)|F38A|1|UnsignedInteger|AnyChange|Difference|LittleEndian|1
+1|Keys (Unused 2)|F38B|1|UnsignedInteger|AnyChange|Difference|LittleEndian|1
+1|Progress Indicator|F3C5|1|UnsignedInteger|AnyChange|AllBytes|LittleEndian|0
+1|Progress Flags 1|F3C6|1|Data|AnyChange|AllBytes|LittleEndian|0
+1|Map Icons|F3C7|1|Data|AnyChange|AllBytes|LittleEndian|0
+1|Progress Flags 2|F3C9|1|Data|AnyChange|AllBytes|LittleEndian|0

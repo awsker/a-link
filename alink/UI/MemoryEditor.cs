@@ -115,7 +115,7 @@ namespace alink.UI
 
         private byte[] bytesFromStringForRule(MemoryRule rule, string valuestring)
         {
-            if (rule.DataType == DataType.Data || rule.DataType == DataType.Flags)
+            if (rule.DataType == DataType.Data)
             {
                 //Can only convert a string to a single byte value
                 if (rule.NumBytes == 1)
