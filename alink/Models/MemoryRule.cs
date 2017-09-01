@@ -72,7 +72,12 @@ namespace alink.Models
         public string Description
         {
             get { return _description; }
-            set { _description = value.Replace("|", string.Empty); }
+            set
+            {
+                if (value == null)
+                    _description = string.Empty;
+                else
+                    _description = value.Replace("|", string.Empty); }
         }
 
         public string MemoryOffset
