@@ -1,4 +1,4 @@
-# a-link
+# A-Link
 This application can synchronize parts of a process' memory between clients that are connected to the same server.
 
 # Usage
@@ -20,6 +20,9 @@ Every rule consists of a couple of fields.
 * What to send - Can be set to 'All bytes' or 'Difference'. The meaning of 'Difference' changes depending on the data type. In the case of 'data' or 'Flags', 'Difference' will only send the bytes that actually changed. This is best used for large number of bytes where you want to avoid (as best as possible) having two or more clients modifying the same data and have them overwrite eachother, even though they aren't touching the same bytes. In the case of numbers, 'Difference' only sends the numerical difference and lets the clients change their values. This is best used for frequently changed values where you don't necessarily need absolute synchronization. When using this option, incoming changes to these addresses will be clamped to their data types' min- and max values so as to avoid wrapping. 
 * [Endianness](https://en.wikipedia.org/wiki/Endianness)
 * Log - if checked, a line will be printed to the chat when the memory at this address was changed
+
+# Hidden Memory Debugging Mode
+Once attached to a process, you can debug the currently selected rules configuration by right-clicking on the 'Edit' button. This opens up a window where you can view and edit the current value of each rule and see its effect on the process in real-time. Any change made here will NOT be propagated to the other clients.
 
 # The settings files
 I kept the settings file as simple and readable as possible. They are plain txt-files with settings separated by linebreaks, so they can be edited outside of the application with ease. Very little error handling is provided if you break the formatting.
