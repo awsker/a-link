@@ -25,7 +25,7 @@ namespace alink.Net
         public Server(int port)
         {
             _port = port;
-            _ipAddress = getIpAdresses();
+            _ipAddress = getIpAddresses();
         }
 
         #region Public properties
@@ -43,7 +43,7 @@ namespace alink.Net
             _clients = new ConcurrentBag<UserThread>();
 
             _stopCalled = false;
-            foreach (var ip in getIpAdresses())
+            foreach (var ip in getIpAddresses())
             {
                 var localIp = ip;
                 var sw = new BackgroundWorker();
@@ -77,9 +77,15 @@ namespace alink.Net
         #endregion
 
         #region Private methods
-        private IPAddress[] getIpAdresses()
+        private IPAddress[] getIpAddresses()
         {
-            return Dns.GetHostAddresses(Dns.GetHostName());
+            var addresses = Dns.GetHostAddresses(Dns.GetHostName());
+            var local = IPAddress.Parse("127.0.0.1");
+            if (!addresses.Any(a => a.Equals(local)))
+            {
+                return addresses.Concat(new IPAddress[] {local}).ToArray();
+            }
+            return addresses;
         }
 
         private void run(IPAddress ip)

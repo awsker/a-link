@@ -117,40 +117,48 @@ namespace alink.UI
                     _lastNetSettings.JoinPort = dialog.Port;
                     _lastNetSettings.Nickname = Nickname;
 
+                    Exception lastEx = null;
                     IPAddress address;
                     if (IPAddress.TryParse(dialog.Address, out address))
                     {
-                        join(address, dialog.Port, Nickname);
-                    }
-                    else
-                    {
-                        Exception lastEx = null;
                         try
                         {
-                            var adresses = Dns.GetHostAddresses(dialog.Address);
-
-                            foreach (var dnsResolve in adresses)
-                            {
-                                try
-                                {
-                                    join(dnsResolve, dialog.Port, Nickname);
-                                    lastEx = null;
-                                    break;
-                                }
-                                catch (Exception ex)
-                                {
-                                    lastEx = ex;
-                                }
-                            }
+                            join(address, dialog.Port, Nickname);
                         }
                         catch (Exception exception)
                         {
                             lastEx = exception;
                         }
-                        if (lastEx != null && (_client == null || !_client.IsConnected))
+                    }
+                    else
+                    {
+
+                        IPAddress[] addresses = new IPAddress[0];
+                        try
                         {
-                            MessageBox.Show("Error finding host address: " + lastEx.Message, "Join Error");
+                            addresses = Dns.GetHostAddresses(dialog.Address);
                         }
+                        catch (Exception exception)
+                        {
+                            lastEx = exception;
+                        }
+                        foreach (var dnsResolve in addresses)
+                        {
+                            try
+                            {
+                                join(dnsResolve, dialog.Port, Nickname);
+                                lastEx = null;
+                                break;
+                            }
+                            catch (Exception ex)
+                            {
+                                lastEx = ex;
+                            }
+                        }
+                    }
+                    if (lastEx != null && (_client == null || !_client.IsConnected))
+                    {
+                        MessageBox.Show("Error finding host address: " + lastEx.Message, "Join Error");
                     }
                     if (_client != null && !_client.IsConnected)
                         disconnect();
@@ -192,10 +200,18 @@ namespace alink.UI
                 hostButton.Enabled = false;
                 
             }
+            clearChat();
             _client = new Client();
             addClientEvents();
-            _client.Connect(ipaddress, port, nickname);
-            clearChat();
+            try
+            {
+                _client.Connect(ipaddress, port, nickname);
+            }
+            catch (Exception)
+            {
+                removeClientEvents();
+                throw;
+            }
             if (_client.IsConnected && (_processManager == null || !_processManager.Running))
             {
                 printToChat("Remember to select and 'Attach' a process", Color.DarkRed);
@@ -356,6 +372,8 @@ namespace alink.UI
             richTextBox1.SelectionColor = color;
             richTextBox1.AppendText(text + "\r\n");
             richTextBox1.SelectionColor = richTextBox1.ForeColor;
+
+            richTextBox1.ScrollToCaret();
         }
 
         private void clearChat()
