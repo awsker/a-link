@@ -42,6 +42,7 @@ Link to the past
 1|NPC Flags|F410|1|Data|AnyChange|AllBytes|LittleEndian|0
 1|Room Data|F000|832|Data|AnyChange|Difference|LittleEndian|0
 1|Magic Usage|F37B|1|Data|AnyChange|AllBytes|LittleEndian|1
+1|Dungeon Items|F364|6|Data|FlagOn|AllBytes|LittleEndian|1
 1|Keys (Sewer Passage)|F37C|1|UnsignedInteger|AnyChange|Difference|LittleEndian|1
 1|Keys (Hyrule Castle)|F37D|1|UnsignedInteger|AnyChange|Difference|LittleEndian|1
 1|Keys (Eastern Palace)|F37E|1|UnsignedInteger|AnyChange|Difference|LittleEndian|1
