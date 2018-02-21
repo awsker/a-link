@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2008
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "alink", "alink\alink.csproj", "{34D67B6E-757F-498D-B9F7-8C6F2743A9CC}"
 EndProject
@@ -19,16 +19,19 @@ Global
 		{34D67B6E-757F-498D-B9F7-8C6F2743A9CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34D67B6E-757F-498D-B9F7-8C6F2743A9CC}.Debug|x64.ActiveCfg = Debug|x64
 		{34D67B6E-757F-498D-B9F7-8C6F2743A9CC}.Debug|x64.Build.0 = Debug|x64
-		{34D67B6E-757F-498D-B9F7-8C6F2743A9CC}.Debug|x86.ActiveCfg = Debug|x86
-		{34D67B6E-757F-498D-B9F7-8C6F2743A9CC}.Debug|x86.Build.0 = Debug|x86
+		{34D67B6E-757F-498D-B9F7-8C6F2743A9CC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{34D67B6E-757F-498D-B9F7-8C6F2743A9CC}.Debug|x86.Build.0 = Debug|Any CPU
 		{34D67B6E-757F-498D-B9F7-8C6F2743A9CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34D67B6E-757F-498D-B9F7-8C6F2743A9CC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{34D67B6E-757F-498D-B9F7-8C6F2743A9CC}.Release|x64.ActiveCfg = Release|x64
 		{34D67B6E-757F-498D-B9F7-8C6F2743A9CC}.Release|x64.Build.0 = Release|x64
-		{34D67B6E-757F-498D-B9F7-8C6F2743A9CC}.Release|x86.ActiveCfg = Release|x86
-		{34D67B6E-757F-498D-B9F7-8C6F2743A9CC}.Release|x86.Build.0 = Release|x86
+		{34D67B6E-757F-498D-B9F7-8C6F2743A9CC}.Release|x86.ActiveCfg = Release|Any CPU
+		{34D67B6E-757F-498D-B9F7-8C6F2743A9CC}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5C73A3BD-75C7-4E86-AB33-DB7F62C3BF0A}
 	EndGlobalSection
 EndGlobal

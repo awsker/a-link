@@ -96,7 +96,7 @@ namespace alink.UI
 
         private void loadMemoryOffsetCombo()
         {
-            _list = new BindingList<MemoryOffset> { new MemoryOffset("-", 0, OffsetType.IntPointer) };
+            _list = new BindingList<MemoryOffset> { new MemoryOffset("-", 0, OffsetType.AbsoluteOffset) };
             foreach (var mo in IOManager.ReadMemoryOffsetsFromFile())
             {
                 _list.Add(mo);

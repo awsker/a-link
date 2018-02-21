@@ -61,6 +61,13 @@ namespace alink
         {
             try
             {
+                string errorMsg;
+                if (!canAttachChecker(out errorMsg))
+                {
+                    MessageBox.Show(errorMsg, "Can not attach", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
+
                 if (_processManager == null)
                     attachManager();
                 else
@@ -72,6 +79,17 @@ namespace alink
                 statusTextError(ex.Message);
                 reset();
             }
+        }
+
+        private bool canAttachChecker(out string message)
+        {
+            if (rulesSelector1.SelectedConfig == null)
+            {
+                message = "No rules configuration selected";
+                return false;
+            }
+            message = null;
+            return true;
         }
 
         private void attachManager()
