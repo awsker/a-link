@@ -1,6 +1,8 @@
 # A-Link
 This application can synchronize parts of a process' memory between clients that are connected to the same server.
 
+![Alt text](/screen.png?raw=true)
+
 # Usage
 Select a process in the top combo box. In the 'Memory Offset' combo box below, create or select a memory offset. This is not required, but can be useful if the memory addresses you intend to reference are dynamic. You can either enter the address to a pointer (32- or 64-bit), or enter an absolute offset that all your rules will use. Now you can hit the 'Attach' button to start listening to the process.
 
